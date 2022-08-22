@@ -1,0 +1,27 @@
+/ {
+	zephyr,user {
+		d0_gpios = <&launchxl_connector 0 0>;
+		d1_gpios = <&launchxl_connector 1 0>;
+		d2_gpios = <&launchxl_connector 2 0>;
+		d3_gpios = <&launchxl_connector 3 0>;
+		d4_gpios = <&launchxl_connector 4 0>;
+		d5_gpios = <&launchxl_connector 5 0>;
+		d6_gpios = <&launchxl_connector 6 0>;
+		d7_gpios = <&launchxl_connector 7 0>;
+		d8_gpios = <&launchxl_connector 8 0>;
+		d9_gpios = <&launchxl_connector 9 0>;
+		d10_gpios = <&launchxl_connector 10 0>;
+		d11_gpios = <&launchxl_connector 11 0>;
+		d12_gpios = <&launchxl_connector 12 0>;
+		d13_gpios = <&launchxl_connector 13 0>;
+		d14_gpios = <&launchxl_connector 14 0>; /* D14 / A0 */
+		d15_gpios = <&launchxl_connector 15 0>;
+		d16_gpios = <&launchxl_connector 16 0>;
+		d17_gpios = <&launchxl_connector 17 0>;
+		d18_gpios = <&launchxl_connector 18 0>; /* D18 / A4 / I2C-SDA */
+		d19_gpios = <&launchxl_connector 19 0>; /* D19 / A5 / I2C-SCL */
+		d20_gpios = <&launchxl_connector 20 0>;
+		d21_gpios = <&launchxl_connector 21 0>;
+		d22_gpios = <&launchxl_connector 22 0>;
+	};
+};
