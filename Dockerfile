@@ -59,9 +59,10 @@ RUN \
   && apt-get remove -y --purge \
   wget \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
-  && git clone git@github.com:arduino/ArduinoCore-API .ArduinoCore-API
-  && sed '/WCharacter.h/ s/./\/\/ &/' .ArduinoCore-API/api/ArduinoAPI.h > .ArduinoCore-API/api/tmpArduinoAPI.h ;
-  && mv .ArduinoCore-API/api/tmpArduinoAPI.h .ArduinoCore-API/api/ArduinoAPI.h ;
-  && ln -sf ~/.ArduinoCore-API/api cores/arduino/. ;
-  && printf '%s\n' "Module Successfully setup...";
+  && rm -rf /var/lib/apt/lists/* \
+  && git clone https://github.com/arduino/ArduinoCore-API.git .ArduinoCore-API \
+  && sed '/WCharacter.h/ s/./\/\/ &/' .ArduinoCore-API/api/ArduinoAPI.h > .ArduinoCore-API/api/tmpArduinoAPI.h \
+  && mv .ArduinoCore-API/api/tmpArduinoAPI.h .ArduinoCore-API/api/ArduinoAPI.h \
+  # && ln -sf ~/.ArduinoCore-API/api cores/arduino/. \
+  && ls -la \
+  && printf '%s\n' "Module Successfully setup..."
