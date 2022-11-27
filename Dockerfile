@@ -8,4 +8,5 @@ RUN \
   && ln -sf .ArduinoCore-API/api gsoc-2022-arduino-core/cores/arduino/. \
   && ls -la && ls -la home/* \
   && cd gsoc-2022-arduino-core && ls -la \
+  && west build -p -b arduino_nano_33_ble samples/blinky_arduino \
   && printf '%s\n' "Module Successfully setup..."
