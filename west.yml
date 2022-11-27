@@ -3,7 +3,7 @@
 
 manifest:
   self:
-    path: gsoc-2022-arduino-core
+    path: modules/lib/Arduino-Zephyr-API
 
   remotes:
     - name: zephyrproject-rtos
