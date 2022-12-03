@@ -10,7 +10,7 @@ int main(void) {
   setup();
 
   for (;;) {
-    loop();
+    loop() // deliberate mistake: missing ;
     if (arduino::serialEventRun) arduino::serialEventRun();
   }
 
