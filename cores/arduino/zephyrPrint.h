@@ -16,6 +16,7 @@ namespace arduino
 namespace zephyr
 {
 
+bool isblank(int c);
 int cbprintf_callback(int c, void *ctx);
 size_t wrap_cbprintf(void *ctx, const char *format, ...);
 size_t print_number_base_any(void *ctx, unsigned long long ull, int base);

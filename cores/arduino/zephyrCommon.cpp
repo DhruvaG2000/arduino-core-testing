@@ -9,6 +9,24 @@
 namespace {
 
 /*
+ * Some Arduino Core API basic function implementations
+ */
+
+/*
+ * isblank() considers blank characters the tab character (‘\t’) and the
+ * space character (‘ ‘)
+ */
+bool isblank(int c)
+{
+	if (c == 9 || c == 32) {
+		return true;
+	}
+
+	return false;
+}
+
+
+/*
  * Calculate GPIO ports/pins number statically from devicetree configuration
  */
 
