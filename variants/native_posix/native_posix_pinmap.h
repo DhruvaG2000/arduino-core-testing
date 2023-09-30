@@ -8,5 +8,6 @@
 #pragma once
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/kernel.h>
+#include <zephyr/drivers/i2c.h>
 #include <zephyr/device.h>
 
