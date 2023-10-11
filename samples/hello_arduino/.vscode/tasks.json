@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+			"label": "West Build",
+			"type": "shell",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"linux": {
+				"command": "/home/dhruva/zephyrproject/.venv/bin/west"
+			},
+            "args": [
+				"build",
+				"-p",
+				"always",
+				"-b",
+				"native_posix"
+			],
+			"problemMatcher": [
+				"$gcc"
+			]
+
+        }
+    ],
+    "inputs": [
+		{
+			"id": "board",
+			"type": "promptString",
+			"default": "native_posix",
+			"description": "See https://docs.zephyrproject.org/latest/boards/index.html"
+		},
+    ]
+
+}

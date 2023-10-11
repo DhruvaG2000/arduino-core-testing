@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "device": "native_posix",
+            "cwd": "${workspaceFolder}",
+            "program": "/home/dhruva/zephyrproject/modules/lib/Arduino-Zephyr-API/samples/hello_arduino/build/zephyr/zephyr.exe",
+            "request": "launch",
+            "type": "cppdbg",
+            "runToEntryPoint": "main",
+            "gdbPath": "/usr/bin/gdb",
+            "preLaunchTask": "West Build"
+        },
+    ]
+}

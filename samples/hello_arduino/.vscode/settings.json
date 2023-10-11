@@ -1,0 +1,11 @@
+{
+    // Hush CMake
+    "cmake.configureOnOpen": false,
+
+    // IntelliSense
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+
+    // File Associations
+    "files.associations": {
+    }
+}
