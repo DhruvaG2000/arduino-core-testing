@@ -23,6 +23,9 @@
 #ifdef CONFIG_BOARD_CC3220SF_LAUNCHXL
 #include "cc3220sf_launchxl_pinmap.h"
 #endif // CONFIG_BOARD_CC3220SF_LAUNCHXL
+#ifdef CONFIG_BOARD_NATIVE_POSIX
+#include "native_posix_pinmap.h"
+#endif // CONFIG_BOARD_NATIVE_POSIX
 
 #define DIGITAL_PIN_EXISTS(n, p, i, dev, num)                                                      \
 	(((dev == DT_REG_ADDR(DT_PHANDLE_BY_IDX(n, p, i))) &&                                      \
