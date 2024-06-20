@@ -44,7 +44,7 @@
 	(DIGITAL_PIN_EXISTS(n, p, i, dev, num) ? i : 0)
 
 /* Only matched pin returns non-zero value, so the sum is matched pin's index */
-#define LED_BUILTIN_FIND_DIGITAL_PIN(dev, pin)                                                     \
+#define DIGITAL_PIN_GPIOS_FIND_PIN(dev, pin)                                                     \
 	DT_FOREACH_PROP_ELEM_SEP_VARGS(DT_PATH(zephyr_user), digital_pin_gpios,                    \
 				       LED_BUILTIN_INDEX_BY_REG_AND_PINNUM, (+), dev, pin)
 
@@ -58,7 +58,7 @@
 #warning "pin not found in digital_pin_gpios"
 #else
 #define LED_BUILTIN                                                                                \
-	LED_BUILTIN_FIND_DIGITAL_PIN(                                                              \
+	DIGITAL_PIN_GPIOS_FIND_PIN(                                                              \
 		DT_REG_ADDR(DT_PHANDLE_BY_IDX(DT_PATH(zephyr_user), builtin_led_gpios, 0)),        \
 		DT_PHA_BY_IDX(DT_PATH(zephyr_user), builtin_led_gpios, 0, pin))
 #endif
@@ -72,7 +72,7 @@
 #warning "pin not found in digital_pin_gpios"
 #else
 #define LED_BUILTIN                                                                                \
-	LED_BUILTIN_FIND_DIGITAL_PIN(DT_REG_ADDR(DT_PHANDLE_BY_IDX(DT_ALIAS(led0), gpios, 0)),     \
+	DIGITAL_PIN_GPIOS_FIND_PIN(DT_REG_ADDR(DT_PHANDLE_BY_IDX(DT_ALIAS(led0), gpios, 0)),     \
 				     DT_PHA_BY_IDX(DT_ALIAS(led0), gpios, 0, pin))
 #endif
 
@@ -96,8 +96,10 @@ const struct gpio_dt_spec arduino_pins[] = {DT_FOREACH_PROP_ELEM_SEP(
 
 #ifdef CONFIG_ADC
 
-#define AN_ENUMS(n, p, i) A ## i = DT_PROP_BY_IDX(n, p, i),
+#define AN_ENUMS(n, p, i) A ## i = DIGITAL_PIN_GPIOS_FIND_PIN( \
+		DT_REG_ADDR(DT_PHANDLE_BY_IDX(DT_PATH(zephyr_user), p, i)),        \
+		DT_PHA_BY_IDX(DT_PATH(zephyr_user), p, i, pin)),
 enum analogPins { DT_FOREACH_PROP_ELEM(DT_PATH(zephyr_user),
-				       io_channel_pins, AN_ENUMS) };
+				       adc_pin_gpios, AN_ENUMS) };
 
 #endif

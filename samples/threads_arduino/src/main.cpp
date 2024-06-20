@@ -44,6 +44,7 @@ void setup()
 }
 void loop()
 {
+printk("THIS IS A BAD COMIT");
 		digitalWrite(D10, HIGH);
 		delay(300);
 		digitalWrite(D10, LOW);
