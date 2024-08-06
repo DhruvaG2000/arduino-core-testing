@@ -4,8 +4,9 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container: zephyrprojectrtos/ci:latest
+    runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/zephyrproject-rtos/ci:latest
     env:
       CMAKE_PREFIX_PATH: /opt/toolchains
     steps:
@@ -20,8 +21,6 @@ jobs:
           west init -m https://github.com/zephyrproject-rtos/gsoc-2022-arduino-core.git
           west update
           git clone https://github.com/arduino/ArduinoCore-API.git ArduinoCore-API
-          sed '/WCharacter.h/ s/./\/\/ &/' ArduinoCore-API/api/ArduinoAPI.h > ArduinoCore-API/api/tmpArduinoAPI.h
-          mv ArduinoCore-API/api/tmpArduinoAPI.h ArduinoCore-API/api/ArduinoAPI.h
           cp -r ArduinoCore-API/api modules/lib/Arduino-Zephyr-API/cores/arduino/.
 
       - name: Build fade
@@ -34,8 +33,8 @@ jobs:
         run: |
           west build -p -b arduino_nano_33_ble_sense samples/i2cdemo
 
-      - name: Archive firmware
-        uses: actions/upload-artifact@v2
-        with:
-          name: firmware
-          path: Arduino-Zephyr-API/build/zephyr/zephyr.*
+      - name: Build adc
+        working-directory: Arduino-Zephyr-API
+        run: |
+          west build -p -b beagleconnect_freedom samples/analog_input
+
