@@ -3,6 +3,14 @@ name: Build
 on: [push, pull_request]
 
 jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cleanup Docker images and containers
+        run: |
+          docker system prune -af
+          docker volume prune -f
+
   build:
     name: Build Arduino-API Zephyr samples
     runs-on: ubuntu-latest
