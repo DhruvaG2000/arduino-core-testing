@@ -12,8 +12,13 @@
 /* scheduling priority used by each thread */
 #define PRIORITY 7
 
+/* shared var */
+unsigned int sharedFlag;
+
+
 void blink0(void)
 {
+	sharedFlag = 0x1;
 	while (1) {
 		digitalWrite(LED_BUILTIN, HIGH);
 		delay(100);
@@ -24,6 +29,7 @@ void blink0(void)
 
 void blink1(void)
 {
+	sharedFlag = 0x100;
 	while (1) {
 		digitalWrite(D11, HIGH);
 		delay(1000);
@@ -48,4 +54,5 @@ void loop()
 		delay(300);
 		digitalWrite(D10, LOW);
 		delay(300);
+		printk("flag: %u\n", sharedFlag);
 }
